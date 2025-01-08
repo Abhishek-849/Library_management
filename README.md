@@ -1,4 +1,3 @@
-Made By: Gurditt Singh Dadiala, Roll No. 22f3000636
 
 Project Overview: The project is a library management system developed using Flask (building application), SQLite (data storage), Jinja2 templates (dynamically generate html templates), and Bootstrap (styling).
 
@@ -28,7 +27,7 @@ Functionalities: Login via the provided passwords or use an online sqlite3 file 
     - Add/Edit/Delete Sections/Books (Section/Book management - Admins Only)
     - Assign a different section to a Book (Admins Only)
     - Auto Revoke after 7 days
-    - User can request upto 5 e-books
+    - User can request upto 5 books
     - Grant/Revoke Book Access (Admins Only)
     - View feedback/ratings (Admins Only)
     - Issue(Request)/Return Books (Users Only)
