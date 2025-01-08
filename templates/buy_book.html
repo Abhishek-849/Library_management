@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy Book</title>
+</head>
+<body>
+    <h1>Payment Portal</h1>
+    <h2>Book Name: {{ book_data[1] }}</h2>
+    <h2>Book Price: {{ book_data[4] }}</h2>
+    <form method="post">
+        <label for="payment">Pay Here:</label>
+        <input type="number" name="payment" placeholder="0" value="0">
+        <button type="submit">PAY</button>
+    </form>
+    <br>
+    <a href="/user_dashboard"><h3>Back to Dashboard</h3></a>
+</body>
+</html>

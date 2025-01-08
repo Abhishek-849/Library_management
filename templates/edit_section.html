@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Section</title>
+    <style>
+        .section-list {
+            color: black;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ece949;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/admin_dashboard">LibGen2.0</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin_dashboard">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Edit Section</h1>
+    <form method="post">
+        <label for="new_section_name">New Section Name:</label>
+        <input type="text" name="new_section_name" placeholder="Enter" required>
+        <label for="new_section_dateCreated">New Section Date Created:</label>
+        <input type="text" name="new_section_dateCreated" placeholder="Enter" required>
+        <label for="new_section_desc">New Section Description:</label>
+        <input type="text" name="new_section_desc" placeholder="Enter" required>
+        <button type="submit">Update Section</button>
+    </form>
+</body>
+</html>

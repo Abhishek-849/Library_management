@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Requests</title>
+    <style>
+        .section-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: calc(33.33% - 40px);
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .section-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .section-card p {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .section-card .btn {
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ece949;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">LibGen2.0</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin_dashboard">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Welcome, {{ session['username'] }}!</h1>
+    <div>
+        <h1>Requests:</h1>
+    </div>
+
+    <!-- Display Requests -->
+    <div class="section-cards">
+        {% if requests_data %}
+            {% for req in requests_data %}
+                {% if req[4] == 1 %}
+                    <div class="section-card">
+                        {% if req[3] == 0 %}
+                            <p>{{ requests[req][1] }} requested Book: {{ requests[req][0] }}</p>
+                            <a href="/view_book_requests/grant_access/{{ req[0] }}"><h5>Grant Access</h5></a>
+                        {% else %}
+                            <p>{{ requests[req][1] }} has access to Book: {{ requests[req][0] }}</p>
+                            <a href="/view_book_requests/revoke_access/{{ req[0] }}"><h5>Revoke Access</h5></a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

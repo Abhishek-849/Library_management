@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Issue Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ece949;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/user_dashboard">LibGen2.0</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user_dashboard">Dashboard</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Issue Book: {{ book_name[0] }}</h1>
+    <br>
+    <form method="post">
+        {% if issue_data[3] == 0 %}
+            {% if issue_data[4] == 0 %}
+                <a href="/issue_book/request_book/{{ issue_data[5] }}"><h5>Send Issue Request to Admin</h5></a>
+            {% else %}
+                <h4>Already Requested</h4>
+                <a href="/issue_book/cancel_request/{{ issue_data[5] }}"><h5>Cancel Request?</h5></a>
+            {% endif %}
+        {% else %}
+            <a href="/issue_book/return_book/{{ issue_data[5] }}"><h5>Return Book</h5></a>
+        {% endif %}
+    </form>
+    <br>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        .section-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: calc(33.33% - 40px);
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .section-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .section-card p {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .section-card .btn {
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ece949;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">LibGen2.0</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+
+            <form action="/admin_dashboard/admin_author_search_results" method="get">
+                <label for="admin_author_search">Author Name:</label>
+                <input type="text" name="admin_author_search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+            <form action="/admin_dashboard/section_search_results" method="get">
+                <label for="admin_section_search">Section Name:</label>
+                <input type="text" name="admin_section_search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h1>Welcome, {{ session['username'] }}!</h1>
+    <h4>Add a Section here...</h4>
+    <form method="post" action="/admin_dashboard/add_section">
+        <label for="section_name">New Section Name:</label>
+        <input type="text" name="section_name" required placeholder="Enter">
+        <label for="section_desc">New Section Description:</label>
+        <input type="text" name="section_desc" required placeholder="Enter">
+        <button type="submit">Add Section</button>
+    </form>
+    <div>
+        <h1>Sections</h1>
+    </div>
+
+    <!-- Display Sections -->
+    <div class="section-cards">
+        {% if sections_data %}
+        {% for section in sections_data %}
+        <div class="section-card">
+            <a href="/admin_dashboard/section_books/{{ section[0] }}"><h3>{{ section[1] }}</h3></a>
+            <p>Date of Creation: {{ section[2] }}</p>
+            <p>Description: {{ section[3] }}</p>
+            <a href="/admin_dashboard/delete_section/{{ section[0] }}" class="delete-link">Delete</a>
+        </br>
+            <a href="/admin_dashboard/edit_section/{{ section[0] }}" class="edit-link">Edit</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No sections created.</p>
+        {% endif %}
+    </div>
+    <br>
+    <br>
+    <a href="/admin_dashboard/view_ratings"><h4>View Ratings</h4></a>
+    <a href="/admin_dashboard/view_book_requests"><h4>View Book Requests</h4></a>
+</body>
+</html>

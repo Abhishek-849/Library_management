@@ -1,0 +1,33 @@
+/* CSS Styling */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.section-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.section-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    min-width: 200px;
+    text-align: center;
+}
+
+#section-form {
+    display: none;
+}
+
+#show-form:checked ~ #section-form {
+    display: block;
+}

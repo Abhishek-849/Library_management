@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Section Search Results</title>
+    <style>
+        .navbar-brand {
+            font-size: 100px;
+        }
+
+        .book-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .book-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .book-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .book-card p {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .book-card .btn {
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ece949;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/admin_dashboard">LibGen2.0</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin_dashboard">Dashboard</a>
+                </li>
+
+            </ul>
+         
+        </div>
+    </nav>
+
+    <h1>{{ search_type }} Search Results</h1>
+    {% if books_data%}
+    <div class="book-cards">
+        {% for book in books_data %}
+        <div class="book-card">
+            <h3>{{ book[1] }}</h3>
+            <p>Content: {{ book[2] }}</p>
+            <p>Author: {{ book[3] }}</p>
+            <p>Price: {{ book[4] }}</p>
+            <a href="/admin_dashboard/delete_book/{{ book[5] }}/{{ book[0] }}" class="delete-link">Delete</a>
+            </br>
+            <a href="/admin_dashboard/edit_book/{{ book[5] }}/{{ book[0] }}" class="edit-link">Edit</a>
+            </br>
+            <a href="/admin_dashboard/assign_section_to_book/{{ book[5] }}/{{ book[0] }}">Assign Section to Book</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <br>
+</body>
+
+</html>
